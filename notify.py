@@ -33,7 +33,7 @@ url3=r"http://car.zju.edu.cn/index.php?c=Wei&a=car"
 fake_user_agent=UserAgent()
 headers={}
 headers["User-Agent"]=fake_user_agent.random
-formdata={"username":"3210105952","password":"azx012624"}
+formdata={"username":"3210105952","password":"*********"}
 #-------------------很遗憾，尽管前三个网站下载部分可以通用，但内容提取部分得分开，以下只适用于学工部------------
 #全局变量保存内容 新闻链接 news_title
 def url_spider1():
@@ -104,7 +104,7 @@ def url_spider1():
             img_content[item.text]=url1_list[option_index]+img_content[item.text]
     pprint.pprint(img_content)
     #写入mysql部分,这里只导入一部分url
-    """mysql_database=pymysql.Connect(host="localhost",user="root",password="azx012624",database="mysql",port=3306)
+    """mysql_database=pymysql.Connect(host="localhost",user="root",password="*********",database="mysql",port=3306)
     cursor=mysql_database.cursor(cursor=pymysql.cursors.DictCursor)    
     table="news_information"
     news_information = [(k, v) for k, v in img_content.items()]
@@ -131,7 +131,7 @@ def url_spider2():
     id_element.send_keys("3210105952")#[1]这里填写您的账号
     password_element=browser.find_element(by='id',value='password')
     password_element.click()
-    password_element.send_keys("azx012624\n")#[2]这里填写您的密码
+    password_element.send_keys("*********\n")#[2]这里填写您的密码
     time.sleep(5)
     html_source=browser.page_source.replace('\u271a','').replace('\xa9','')
     logging.debug(html_source)
@@ -148,7 +148,7 @@ def url_spider2():
             news_data[item.text]=r"http:"+news_data[item.text]
     pprint.pprint(news_data)
     #写入mysql部分
-    """mysql_database=pymysql.Connect(host="localhost",user="root",password="azx012624",database="mysql",port=3306)
+    """mysql_database=pymysql.Connect(host="localhost",user="root",password="******",database="mysql",port=3306)
     cursor=mysql_database.cursor(cursor=pymysql.cursors.DictCursor)    
     table="news_information"
     news_information = [(k, v) for k, v in news_data.items()]
